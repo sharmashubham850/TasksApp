@@ -8,6 +8,30 @@
 
 {% block content %}
 
-    <h1>Hello World 2!</h1>
+    <h1>Tasks App</h1>
+
+    <table>
+            <tr>
+                <th>Task</th>
+                <th>Added</th>
+                <th>Actions</th>
+            </tr>
+            {% for task in tasks %}
+            <tr>
+                <td>{{task[1]}}</td>
+                <td>{{task[2] | date_to_str}}</td>
+                <td>
+                    <a href="/update/{{task[0]}}">Update</a>
+                    <br>
+                    <a href="/delete/{{task[0]}}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+    </table>
+
+    <form action="" method="post">
+        <input type="text" name="task" id="task">
+        <input type="submit" value="Add task">
+    </form>
 
 {% endblock content %}
