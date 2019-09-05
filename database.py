@@ -47,12 +47,24 @@ def delete_task(task_id: int):
         conn.commit()
 
 
+def get_task(task_id: int):
+    with sqlite3.connect('data.db') as conn:
+        cursor = conn.cursor()
+
+        command = "SELECT * FROM tasks WHERE id= ?"
+
+        cursor.execute(command, (task_id,))
+
+        return cursor.fetchone()
+
+
 def get_all_tasks():
     with sqlite3.connect('data.db') as conn:
         cursor = conn.cursor()
 
         command = "SELECT * FROM tasks"
 
-        tasks = cursor.execute(command)
+        cursor.execute(command)
+        conn.commit()
 
         return cursor.fetchall()

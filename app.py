@@ -13,7 +13,7 @@ database.create_table()
 @app.route('/', methods=['GET', 'POST'])
 def home():
     if request.method == 'POST':
-        task = request.form.get('task')
+        task = request.form.get('content')
         if not task:
             return render_template('apology.html', msg='No task provided!'), 404
 
@@ -37,7 +37,8 @@ def update(id):
         return redirect('/')
 
     else:
-        return render_template('update.html')
+        task = database.get_task(task_id=id)
+        return render_template('update.html', task=task)
 
 
 @app.route('/delete/<int:id>')

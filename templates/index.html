@@ -9,13 +9,16 @@
 {% block content %}
 
     <h1>Tasks App</h1>
-
+    {% if tasks %}
     <table>
+        <thead>
             <tr>
                 <th>Task</th>
                 <th>Added</th>
                 <th>Actions</th>
             </tr>
+        </thead>
+        <tbody>
             {% for task in tasks %}
             <tr>
                 <td>{{task[1]}}</td>
@@ -27,11 +30,15 @@
                 </td>
             </tr>
             {% endfor %}
+        </tbody>
     </table>
+    {% else %}
+    <h5>There are no tasks. Create one below</h5>
+    {% endif %}
 
     <form action="" method="post">
-        <input type="text" name="task" id="task">
-        <input type="submit" value="Add task">
+        <input type="text" name="content" id="content" autocomplete="off">
+        <button type="submit" class="button">Add task</button>
     </form>
 
 {% endblock content %}
