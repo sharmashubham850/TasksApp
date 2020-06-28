@@ -1,3 +1,15 @@
 # Task Master
 
-A task CRUD app made with python3 and flask microframework on top of Sqlite database.
+A task management web app.
+
+## Usage
+`pip install -r requirements.txt`
+
+`venv/Scripts/activate`
+
+`python app.py`
+ 
+## Tools used
+- Python3
+- Flask
+- Sqlite3
